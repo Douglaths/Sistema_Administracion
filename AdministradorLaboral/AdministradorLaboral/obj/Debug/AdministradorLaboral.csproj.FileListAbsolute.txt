@@ -1,0 +1,352 @@
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\AdministradorLaboral.dll.config
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\AdministradorLaboral.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\AdministradorLaboral.pdb
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\csc.exe
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\csc.exe.config
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\csc.rsp
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\csi.exe
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\csi.exe.config
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\csi.rsp
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.AppContext.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Collections.Immutable.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Console.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Globalization.Calendars.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.IO.Compression.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.IO.Compression.ZipFile.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.IO.FileSystem.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Net.Http.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Net.Sockets.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Reflection.Metadata.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.ValueTuple.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Xml.XPath.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\vbc.exe
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\vbc.exe.config
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\vbc.rsp
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\VBCSCompiler.exe
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\VBCSCompiler.exe.config
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Antlr3.Runtime.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Web.Infrastructure.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Newtonsoft.Json.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Helpers.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Mvc.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Optimization.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Razor.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.WebPages.Deployment.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.WebPages.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.WebPages.Razor.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\WebGrease.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Helpers.xml
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Mvc.xml
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Optimization.xml
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Razor.xml
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.WebPages.xml
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.WebPages.Deployment.xml
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.WebPages.Razor.xml
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Newtonsoft.Json.xml
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Antlr3.Runtime.pdb
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.Helpers.resources.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.Mvc.resources.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.Optimization.resources.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.Razor.resources.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.WebPages.resources.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.WebPages.Deployment.resources.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.WebPages.Razor.resources.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\obj\Debug\AdministradorLaboral.csproj.AssemblyReference.cache
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\obj\Debug\AdministradorLaboral.csproj.CoreCompileInputs.cache
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\obj\Debug\Administ.F0E38937.Up2Date
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\obj\Debug\AdministradorLaboral.dll
+D:\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\obj\Debug\AdministradorLaboral.pdb
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\AdministradorLaboral.dll.config
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\AdministradorLaboral.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\AdministradorLaboral.pdb
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\csc.exe
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\csc.exe.config
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\csc.rsp
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\csi.exe
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\csi.exe.config
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\csi.rsp
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.AppContext.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Console.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.IO.Compression.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Net.Http.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Net.Sockets.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.ValueTuple.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Xml.XPath.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\vbc.exe
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\vbc.exe.config
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\vbc.rsp
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\VBCSCompiler.exe
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Antlr3.Runtime.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Newtonsoft.Json.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Helpers.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Mvc.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Optimization.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Razor.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.WebPages.Deployment.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.WebPages.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.WebPages.Razor.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\WebGrease.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Helpers.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Mvc.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Optimization.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Razor.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.WebPages.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.WebPages.Deployment.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.WebPages.Razor.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Newtonsoft.Json.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Antlr3.Runtime.pdb
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.Helpers.resources.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.Mvc.resources.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.Optimization.resources.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.Razor.resources.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.WebPages.resources.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\obj\Debug\AdministradorLaboral.csproj.AssemblyReference.cache
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\obj\Debug\AdministradorLaboral.csproj.CoreCompileInputs.cache
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\obj\Debug\Administ.F0E38937.Up2Date
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\obj\Debug\AdministradorLaboral.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\obj\Debug\AdministradorLaboral.pdb
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Buffers.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.IO.Pipelines.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Memory.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Numerics.Vectors.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.AspNetCore.Http.Features.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Buffers.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.IO.Pipelines.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Memory.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Numerics.Vectors.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.AspNetCore.Cors.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.AspNetCore.Http.Extensions.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.Options.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Net.Http.Headers.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Newtonsoft.Json.Bson.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.ComponentModel.Annotations.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Net.Http.Formatting.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Text.Encodings.Web.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Cors.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Http.Cors.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Http.dll
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.AspNetCore.Cors.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.AspNetCore.Http.Abstractions.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.AspNetCore.Http.Extensions.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.Options.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Net.Http.Headers.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Newtonsoft.Json.Bson.pdb
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Newtonsoft.Json.Bson.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Net.Http.Formatting.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Text.Encodings.Web.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Http.xml
+C:\Users\willi\Desktop\Will Memoria\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Http.Cors.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\AdministradorLaboral.dll.config
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\AdministradorLaboral.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\AdministradorLaboral.pdb
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\csc.exe
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\csc.exe.config
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\csc.rsp
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\csi.exe
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\csi.exe.config
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\csi.rsp
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.Managed.Core.targets
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.AppContext.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Collections.Immutable.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Console.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Globalization.Calendars.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.IO.Compression.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.IO.FileSystem.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Net.Http.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Net.Sockets.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Reflection.Metadata.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.ValueTuple.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Xml.XmlDocument.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Xml.XPath.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\vbc.exe
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\vbc.exe.config
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\vbc.rsp
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\VBCSCompiler.exe
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\roslyn\VBCSCompiler.exe.config
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Antlr3.Runtime.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.AspNetCore.Cors.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.AspNetCore.Http.Extensions.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.AspNetCore.Http.Features.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.Options.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.Primitives.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Net.Http.Headers.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Web.Infrastructure.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Newtonsoft.Json.Bson.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Newtonsoft.Json.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Buffers.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.ComponentModel.Annotations.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.IO.Pipelines.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Memory.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Net.Http.Formatting.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Numerics.Vectors.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Text.Encodings.Web.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Threading.Tasks.Extensions.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Cors.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Helpers.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Http.Cors.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Http.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Mvc.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Optimization.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Razor.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.WebPages.Deployment.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.WebPages.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.WebPages.Razor.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\WebGrease.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.AspNetCore.Cors.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.AspNetCore.Http.Abstractions.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.AspNetCore.Http.Extensions.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.AspNetCore.Http.Features.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.Options.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Extensions.Primitives.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.Net.Http.Headers.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Newtonsoft.Json.Bson.pdb
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Newtonsoft.Json.Bson.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Buffers.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.IO.Pipelines.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Memory.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Net.Http.Formatting.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Numerics.Vectors.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Text.Encodings.Web.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Threading.Tasks.Extensions.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Http.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Http.Cors.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Helpers.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Mvc.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Optimization.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.Razor.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.WebPages.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.WebPages.Deployment.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\System.Web.WebPages.Razor.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Newtonsoft.Json.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Antlr3.Runtime.pdb
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.Helpers.resources.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.Mvc.resources.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.Optimization.resources.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.Razor.resources.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.WebPages.resources.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\obj\Debug\AdministradorLaboral.csproj.AssemblyReference.cache
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\obj\Debug\AdministradorLaboral.csproj.CoreCompileInputs.cache
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\obj\Debug\Administ.F0E38937.Up2Date
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\obj\Debug\AdministradorLaboral.dll
+C:\WILLIAMPROYECTOS\ASP.NET\Sistema_Administracion\AdministradorLaboral\AdministradorLaboral\obj\Debug\AdministradorLaboral.pdb

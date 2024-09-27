@@ -1,0 +1,619 @@
+﻿@model IEnumerable<AdministradorLaboral.Models.Personal>
+
+@{
+    ViewBag.Title = "Personal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Lista de Personal</h2>
+    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addPersonalModal">Agregar Empleado</button>
+
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Especializacion</th>
+                <th>Horarios</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var personal in Model)
+            {
+                <tr>
+                    <td>@personal.DNI</td>
+                    <td>@personal.Nombre</td>
+                    <td>@personal.Especializacion</td>
+                    <td>@personal.Horarios</td>
+                    <td>@personal.Telefono</td>
+                    <td>@personal.Email</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Acciones">
+                            <button class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#personalProfileModal" data-id="@personal.Id">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <div style="width: 10px;"></div>
+                            <!-- Botón Editar -->
+                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editPersonalModal" data-id="@personal.Id">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <!-- Espacio entre botones -->
+                            <div style="width: 10px;"></div>
+                            <!-- Botón Eliminar -->
+                            <button class="btn btn-danger btn-sm" onclick="deletePersonal(@personal.Id)">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="personalProfileModal" tabindex="-1" role="dialog" aria-labelledby="personalProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="personalProfileModalLabel">Perfil del Trabajador</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <img id="personalPhoto" class="img-fluid rounded-circle shadow-lg" src="" alt="Foto del Trabajador" style="width: 250px; height: 250px; object-fit: cover; border: 2px solid #f8f9fa;" />
+                    </div>
+
+                    <div class="col-md-8">
+                        <h5 id="personalName" style="font:bold;"></h5>
+                        <p><strong>DNI:</strong> <span id="personalDNI"></span></p>
+                        <p><strong>Dirección:</strong> <span id="personalAddress"></span></p>
+                        <p><strong>Teléfono:</strong> <span id="personalPhone"></span></p>
+                        <p><strong>Email:</strong> <span id="personalEmail"></span></p>
+                        <p><strong>Fecha de Nacimiento:</strong> <span id="personalDOB"></span></p>
+                        <p><strong>Género:</strong> <span id="personalGender"></span></p>
+                        <p><strong>Especialización:</strong> <span id="personalSpecialization"></span></p>
+                        <p><strong>Experiencia:</strong> <span id="personalExperience"></span></p>
+                        <div id="certificatesSection">
+                            <strong>Certificaciones:</strong>
+                            <ul id="certificatesList"></ul>
+                        </div>
+                        <p><strong>Horarios de Operación:</strong> <span id="personalHours"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addPersonalModal" tabindex="-1" role="dialog" aria-labelledby="addPersonalModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="addPersonalModalLabel">Agregar Personal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="addCentroForm" method="post" action="/Administrador/AgregarPersonal" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <input type="hidden" class="form-control" id="horarios" name="Horarios" />
+                    <input type="hidden" class="form-control" id="usuario" name="usuario" value="@ViewBag.UserName" />
+                    <input type="hidden" class="form-control" id="id" name="idUser" value="@ViewBag.userId" />
+                    <input type="hidden" class="form-control" id="centro" name="centros" value="@ViewBag.UserCenter" />
+                    <input type="hidden" class="form-control" id="rol" name="role" value="@ViewBag.userRole" />
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="dni">DNI</label>
+                            <input type="text" class="form-control" id="dni" name="DNI" placeholder="N° DNI" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="nombre">Nombre Completo</label>
+                            <input type="text" class="form-control" id="nombre" name="Nombre" placeholder="Nombres y Apellidos" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="direccion">Direccion</label>
+                            <input type="text" class="form-control" id="direccion" name="Direccion" placeholder="Direccion de Residencia" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="telefono">Teléfono</label>
+                            <input type="text" class="form-control" id="telefono" name="Telefono" placeholder="Teléfono del centro" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="email">Email de Contacto</label>
+                            <input type="email" class="form-control" id="email" name="Email" placeholder="Email de contacto" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" id="fechaNacimiento" name="FechaNacimiento" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="genero">Genero</label>
+                            <select class="form-control" id="genero" name="Genero">
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                                <option value="Otros">Otros</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="foto">Foto de Perfil</label>
+                            <input type="file" class="form-control" id="foto" name="foto" accept="image/png" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="horaApertura">Hora de Apertura</label>
+                            <input type="time" class="form-control" id="horaApertura" name="horaApertura" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="horaCierre">Hora de Cierre</label>
+                            <input type="time" class="form-control" id="horaCierre" name="horaCierre" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="experiencia">Experiencia</label>
+                            <textarea class="form-control" id="experiencia" name="Experiencia"></textarea>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="certificaiones">Certificaciones</label>
+                            <input type="file" class="form-control" id="certificaciones" name="certificaciones" multiple />
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="especializacion">Especialidad</label>
+                            <select class="form-control" id="especializacion" name="Especializacion">
+                                <option value="Peluqueria">Peluqueria</option>
+                                <option value="Estetica">Estetica</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Días de Operación</label>
+                            <div id="dias" class="form-check">
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" id="lunes" name="dias" value="Lunes">
+                                    <label class="form-check-label" for="lunes">Lunes</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" id="martes" name="dias" value="Martes">
+                                    <label class="form-check-label" for="martes">Martes</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" id="miercoles" name="dias" value="Miércoles">
+                                    <label class="form-check-label" for="miercoles">Miércoles</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" id="jueves" name="dias" value="Jueves">
+                                    <label class="form-check-label" for="jueves">Jueves</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" id="viernes" name="dias" value="Viernes">
+                                    <label class="form-check-label" for="viernes">Viernes</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" id="sabado" name="dias" value="Sábado">
+                                    <label class="form-check-label" for="sabado">Sábado</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" id="domingo" name="dias" value="Domingo">
+                                    <label class="form-check-label" for="domingo">Domingo</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editPersonalModal" tabindex="-1" role="dialog" aria-labelledby="editPersonalModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="editPersonalModalLabel">Editar Personal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="editPersonalForm" method="post" action="/Administrador/ActualizarPersonal" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <input type="hidden" class="form-control" id="editHorarios" name="Horarios" />
+                    <input type="hidden" class="form-control" id="editPersonalId" name="Id" />
+                    <input type="hidden" class="form-control" id="usuario" name="usuario" value="@ViewBag.UserName" />
+                    <input type="hidden" class="form-control" id="id" name="idUser" value="@ViewBag.userId" />
+                    <input type="hidden" class="form-control" id="centro" name="centros" value="@ViewBag.UserCenter" />
+                    <input type="hidden" class="form-control" id="rol" name="role" value="@ViewBag.userRole" />
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editDni">DNI</label>
+                            <input type="text" class="form-control" id="editDni" name="DNI" placeholder="N° DNI" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="nombre">Nombre Completo</label>
+                            <input type="text" class="form-control" id="editNombre" name="Nombre" placeholder="Nombres y Apellidos" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editDireccion">Direccion</label>
+                            <input type="text" class="form-control" id="editDireccion" name="Direccion" placeholder="Direccion de Residencia" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editTelefono">Teléfono</label>
+                            <input type="text" class="form-control" id="editTelefono" name="Telefono" placeholder="Teléfono del centro" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editEmail">Email de Contacto</label>
+                            <input type="email" class="form-control" id="editEmail" name="Email" placeholder="Email de contacto" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editFechaNacimiento">Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" id="editFechaNacimiento" name="FechaNacimiento" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editGenero">Genero</label>
+                            <select class="form-control" id="editGenero" name="Genero">
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                                <option value="Otros">Otros</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editFoto">Foto de Perfil</label>
+                            <input type="file" class="form-control" id="editFoto" name="foto" accept="image/png"/>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editHoraApertura">Hora de Apertura</label>
+                            <input type="time" class="form-control" id="editHoraApertura" name="horaApertura" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editHoraCierre">Hora de Cierre</label>
+                            <input type="time" class="form-control" id="editHoraCierre" name="horaCierre" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editExperiencia">Experiencia</label>
+                            <textarea class="form-control" id="editExperiencia" name="Experiencia"></textarea>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editCertificaciones">Certificaciones</label>
+                            <input type="file" class="form-control" id="editCertificaciones" name="certificaciones" multiple />
+                            <strong>Certificaciones:</strong>
+                            <ul id="editCertificatesList"></ul>
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editEspecializacion">Especialidad</label>
+                            <select class="form-control" id="editEspecializacion" name="Especializacion">
+                                <option value="Peluqueria">Peluqueria</option>
+                                <option value="Estetica">Estetica</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Días de Operación</label>
+                            <div id="editDias" class="form-check">
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" id="editLunes" name="dias" value="Lunes">
+                                    <label class="form-check-label" for="editLunes">Lunes</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" id="editMartes" name="dias" value="Martes">
+                                    <label class="form-check-label" for="editMartes">Martes</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" id="editMiercoles" name="dias" value="Miércoles">
+                                    <label class="form-check-label" for="editMiercoles">Miércoles</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" id="editJueves" name="dias" value="Jueves">
+                                    <label class="form-check-label" for="editJueves">Jueves</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" id="editViernes" name="dias" value="Viernes">
+                                    <label class="form-check-label" for="editViernes">Viernes</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" id="editSabado" name="dias" value="Sábado">
+                                    <label class="form-check-label" for="editSabado">Sábado</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="checkbox" class="form-check-input" id="editDomingo" name="dias" value="Domingo">
+                                    <label class="form-check-label" for="editDomingo">Domingo</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Incluye Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    $('#editPersonalModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Botón que abrió el modal
+        var id = button.data('id'); // Extraer ID del atributo data-id
+
+        // Realizar una solicitud AJAX para obtener los datos del centro
+        $.ajax({
+            url: '/Administrador/ObtenerPersonalId/' + id,
+            type: 'GET',
+            success: function (data) {
+                // Llenar el formulario con los datos del centro
+                $('#editPersonalId').val(data.Id);
+                $('#editDni').val(data.DNI);
+                $('#editNombre').val(data.Nombre);
+                $('#editDireccion').val(data.Direccion);
+                $('#editTelefono').val(data.Telefono);
+                $('#editEmail').val(data.Email);               
+                $('#editGenero').val(data.Genero);
+                $('#editExperiencia').val(data.Experiencia);
+                $('#editEspecializacion').val(data.Especializacion);
+
+                // Suponiendo que data.FechaNacimiento es "/Date(1725771600000)/"
+                var fechaUnix = parseInt(data.FechaNacimiento.replace(/\/Date\((\d+)\)\//, '$1'));
+                var fecha = new Date(fechaUnix);
+
+                // Formatear la fecha a "yyyy-MM-dd"
+                var year = fecha.getFullYear();
+                var month = ('0' + (fecha.getMonth() + 1)).slice(-2);
+                var day = ('0' + fecha.getDate()).slice(-2);
+                var formattedDate = year + '-' + month + '-' + day;
+
+                // Asignar la fecha formateada al campo de entrada
+                $('#editFechaNacimiento').val(formattedDate);
+
+
+                let base64String = data.Foto;
+                // Agregar el prefijo manualmente
+                const mimeType = "image/png"; // Ajusta esto según el tipo de imagen
+                base64String = `data:${mimeType};base64,${data.Foto}`;
+
+                // Convertir la cadena base64 a un Blob
+                const byteCharacters = atob(base64String.split(',')[1]);
+                const byteNumbers = new Array(byteCharacters.length);
+                for (let i = 0; i < byteCharacters.length; i++) {
+                    byteNumbers[i] = byteCharacters.charCodeAt(i);
+                }
+                const byteArray = new Uint8Array(byteNumbers);
+                const blob = new Blob([byteArray], { type: mimeType });
+
+                // Crear un objeto File a partir del Blob
+                const file = new File([blob], `profile.${mimeType.split('/')[1]}`, { type: mimeType });
+
+                // Crear un DataTransfer para simular la selección de un archivo
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(file);
+
+                // Asignar el archivo al input file
+                const input = document.getElementById('editFoto');
+                input.files = dataTransfer.files;
+
+
+                // Procesar y mostrar las certificaciones
+                var $certificatesList = $('#editCertificatesList');
+                $certificatesList.empty(); // Limpiar la lista existente
+
+                // Verificar si hay certificaciones
+                if (data.CertificacionesArray && data.CertificacionesArray.length > 0) {
+                    console.log('entro');
+                    data.CertificacionesArray.forEach(function (cert) {
+                        // Extraer el nombre del archivo de la ruta completa
+                        var fileName = cert.split('/').pop().split('\\').pop();
+                        var $link = $('<a>').attr('href', cert).attr('target', '_blank').text(fileName);
+                        var $removeIcon = $('<span>').text('❌').css('cursor', 'pointer').click(function () {
+                            // Eliminar el archivo del servidor
+                            $.ajax({
+                                url: '/Administrador/EliminarCertificacion', // Cambia esta URL a la ruta correcta
+                                type: 'POST',
+                                data: { path: cert },
+                                success: function (response) {
+                                    // Eliminar el elemento de la lista
+                                    $listItem.remove();
+                                },
+                                error: function (error) {
+                                    console.error('Error al eliminar el archivo:', error);
+                                }
+                            });
+                        });
+                        var $listItem = $('<li>').append($link).append(' ').append($removeIcon);
+                        $certificatesList.append($listItem);
+                    });
+                } else {
+                    $certificatesList.append('<li>No hay certificaciones disponibles</li>');
+                }
+
+
+                // Procesar el campo Horarios
+                var horarios = data.Horarios.split(' - Hora: ');
+                console.log(horarios);
+                if (horarios.length === 2) {
+                    var dias = horarios[0].split(', ');
+                    var horaApertura = horarios[1].split(' a ')[0];
+                    var horaCierre = horarios[1].split(' a ')[1];
+
+                    // Marcar los días de operación
+                    dias.forEach(function (dia) {
+                        $('#editDias input[name="dias"][value="' + dia + '"]').prop('checked', true);
+                    });
+
+                    $('#editHoraApertura').val(horaApertura);
+                    $('#editHoraCierre').val(horaCierre);
+                }
+            },
+            error: function (xhr, status, error) {
+                alert("Error al cargar los datos del centro.");
+            }
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#personalProfileModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Botón que activó el modal
+            var id = button.data('id'); // Obtén el ID del trabajador
+            var modal = $(this);
+
+            $.ajax({
+                url: '/Administrador/ObtenerPerfil', // URL del método en el controlador
+                type: 'GET',
+                data: { id: id },
+                success: function (data) {
+                    // Cargar la foto de perfil
+                    
+                    modal.find('#personalPhoto').attr('src', 'data:image/png;base64,' + data.Foto);
+
+                    // Cargar el resto de la información del trabajador
+                    modal.find('#personalName').text(data.Nombre);
+                    modal.find('#personalDNI').text(data.DNI);
+                    modal.find('#personalAddress').text(data.Direccion);
+                    modal.find('#personalPhone').text(data.Telefono);
+                    modal.find('#personalEmail').text(data.Email);
+                    modal.find('#personalDOB').text(new Date(data.FechaNacimiento).toLocaleDateString());
+                    modal.find('#personalGender').text(data.Genero);
+                    modal.find('#personalSpecialization').text(data.Especializacion);
+                    modal.find('#personalExperience').text(data.Experiencia);
+                    modal.find('#personalHours').text(data.HorariosOperacion);
+
+                    // Procesar y mostrar las certificaciones
+                    var $certificatesList = modal.find('#certificatesList');
+                    $certificatesList.empty(); // Limpiar la lista existente
+
+                    // Verificar si hay certificaciones
+                    if (data.Certificaciones && data.Certificaciones.length > 0) {
+                        data.Certificaciones.forEach(function (cert) {
+                            // Extraer el nombre del archivo de la ruta completa
+                            var fileName = cert.split('/').pop().split('\\').pop();
+                            var $link = $('<a>').attr('href', cert).attr('target', '_blank').text(fileName);
+                            var $listItem = $('<li>').append($link);
+                            $certificatesList.append($listItem);
+                        });
+                    }
+                    else {
+                        $certificatesList.append('<li>No hay certificaciones disponibles</li>');
+                    }
+
+                    // Puedes agregar lógica para el rendimiento del trabajador si tienes esa información
+                    modal.find('#appointmentsAttended').text('Número de citas atendidas'); // Sustituye con el valor real
+                    modal.find('#appointmentsCancelled').text('Número de citas canceladas'); // Sustituye con el valor real
+                },
+                error: function () {
+                    alert('Error al cargar la información del trabajador.');
+                }
+            });
+        });
+    });
+
+
+</script>
+
+<script>
+    function getHorarios() {
+        // Recoger los días seleccionados
+        let dias = [];
+        document.querySelectorAll('input[name="dias"]:checked').forEach(function (checkbox) {
+            dias.push(checkbox.value);
+        });
+
+        // Recoger las horas de apertura y cierre
+        let horaApertura = document.getElementById('horaApertura').value;
+        let horaCierre = document.getElementById('horaCierre').value;
+
+        // Concatenar la información
+        let horarios = dias.join(', ') + ' - Hora: ' + horaApertura + ' a ' + horaCierre;
+
+        // Asignar el valor concatenado al campo oculto
+        document.getElementById('horarios').value = horarios;
+    }
+
+    function getHorariosEditar() {
+        // Recoger los días seleccionados
+        let dias = [];
+        document.querySelectorAll('input[name="dias"]:checked').forEach(function (checkbox) {
+            dias.push(checkbox.value);
+            console.log(dias);
+        });
+
+        // Recoger las horas de apertura y cierre
+        let horaApertura = document.getElementById('editHoraApertura').value;
+        let horaCierre = document.getElementById('editHoraCierre').value;
+
+        // Concatenar la información
+        let horarios = dias.join(', ') + ' - Hora: ' + horaApertura + ' a ' + horaCierre;
+
+        // Asignar el valor concatenado al campo oculto
+        document.getElementById('editHorarios').value = horarios;
+    }
+
+    function deletePersonal(id) {
+        if (confirm("¿Está seguro de que desea eliminar este personal?")) {
+            $(document).ready(function () {
+                $.ajax({
+                    url: '/Administrador/EliminarPersonal/' + id,
+                    type: 'POST',
+                    success: function (result) {
+                        location.reload();
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Ocurrió un error al eliminar el personal.");
+                    }
+                });
+            })
+
+        }
+    }
+
+    document.querySelector('form').addEventListener('submit', function () {
+        getHorarios();
+    });
+
+    document.querySelector('#editPersonalForm').addEventListener('submit', function () {
+        getHorariosEditar();
+    });
+</script>

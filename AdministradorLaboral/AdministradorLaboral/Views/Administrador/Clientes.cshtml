@@ -1,0 +1,260 @@
+﻿@model IEnumerable<AdministradorLaboral.Models.Cliente>
+
+@{
+    ViewBag.Title = "Clientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Lista de Clientes</h2>
+    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addClienteModal">Agregar Cliente</button>
+
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Direccion</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cliente in Model)
+            {
+                <tr>
+                    <td>@cliente.Nombre</td>
+                    <td>@cliente.Apellido</td>
+                    <td>@cliente.Direccion</td>
+                    <td>@cliente.Email</td>
+                    <td>@cliente.Telefono</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Acciones">
+                            <button class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#clienteProfileModal" data-id="@cliente.Id">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <div style="width: 10px;"></div>
+                            <!-- Botón Editar -->
+                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editClienteModal" data-id="@cliente.Id">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <!-- Espacio entre botones -->
+                            <div style="width: 10px;"></div>
+                            <!-- Botón Eliminar -->
+                            <button class="btn btn-danger btn-sm" onclick="deleteCliente(@cliente.Id)">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="addClienteModal" tabindex="-1" role="dialog" aria-labelledby="addClienteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="addClienteModalLabel">Agregar Cliente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="addClienteForm" method="post" action="/Administrador/AgregarClientes">
+                <div class="modal-body">
+                    <input type="hidden" class="form-control" id="usuario" name="usuario" value="@ViewBag.UserName" />
+                    <input type="hidden" class="form-control" id="id" name="id" value="@ViewBag.userId" />
+                    <input type="hidden" class="form-control" id="centro" name="centros" value="@ViewBag.UserCenter" />
+                    <input type="hidden" class="form-control" id="rol" name="role" value="@ViewBag.userRole" />
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="nombre">Nombres</label>
+                            <input type="text" class="form-control" id="nombre" name="Nombre" placeholder="Nombres" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="apellido">Apellidos</label>
+                            <input type="text" class="form-control" id="apellido" name="Apellido" placeholder="Apellidos" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="telefono">Teléfono</label>
+                            <input type="text" class="form-control" id="telefono" name="Telefono" placeholder="Teléfono de contacto" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="email">Email de Contacto</label>
+                            <input type="email" class="form-control" id="email" name="Email" placeholder="Email de contacto" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="direccion">Dirección</label>
+                            <input type="text" class="form-control" id="direccion" name="Direccion" placeholder="Dirección del cliente" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" id="fechaNacimiento" name="FechaNacimiento" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="preferencia">Preferencias</label>
+                            <select class="form-control" id="preferencia" name="Preferencias">
+                                <option value="N/A">N/A</option>
+                                <option value="Servicio 1">Servicio 1</option>
+                                <option value="Servicio 2">Servicio 2</option>
+                                <option value="Servicio 3">Servicio 3</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="notas">Notas</label>
+                            <input type="text" class="form-control" id="notas" name="Notas" placeholder="Notas del cliente" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editClienteModal" tabindex="-1" role="dialog" aria-labelledby="editClienteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="editClienteModalLabel">Editar Cliente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="editClienteForm" method="post" action="/Administrador/ActualizarClientes">
+                <div class="modal-body">
+                    <input type="hidden" class="form-control" id="editClienteId" name="Id" />
+                    <input type="hidden" class="form-control" id="usuario" name="usuario" value="@ViewBag.UserName" />
+                    <input type="hidden" class="form-control" id="idUser" name="idUser" value="@ViewBag.userId" />
+                    <input type="hidden" class="form-control" id="centro" name="centros" value="@ViewBag.UserCenter" />
+                    <input type="hidden" class="form-control" id="rol" name="role" value="@ViewBag.userRole" />
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editNombre">Nombres</label>
+                            <input type="text" class="form-control" id="editNombre" name="Nombre" placeholder="Nombres" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editApellido">Apellidos</label>
+                            <input type="text" class="form-control" id="editApellido" name="Apellido" placeholder="Apellidos" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editTelefono">Teléfono</label>
+                            <input type="text" class="form-control" id="editTelefono" name="Telefono" placeholder="Teléfono de contacto" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editEmail">Email de Contacto</label>
+                            <input type="email" class="form-control" id="editEmail" name="Email" placeholder="Email de contacto" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editDireccion">Dirección</label>
+                            <input type="text" class="form-control" id="editDireccion" name="Direccion" placeholder="Dirección del cliente" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editFechaNacimiento">Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" id="editFechaNacimiento" name="FechaNacimiento" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editPreferencia">Preferencias</label>
+                            <select class="form-control" id="editPreferencia" name="Preferencias">
+                                <option value="N/A">N/A</option>
+                                <option value="Servicio 1">Servicio 1</option>
+                                <option value="Servicio 2">Servicio 2</option>
+                                <option value="Servicio 3">Servicio 3</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editNotas">Notas</label>
+                            <input type="text" class="form-control" id="editNotas" name="Notas" placeholder="Notas del cliente" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Incluye Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    $('#editClienteModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Botón que abrió el modal
+        var id = button.data('id'); // Extraer ID del atributo data-id
+
+        // Realizar una solicitud AJAX para obtener los datos del centro
+        $.ajax({
+            url: '/Administrador/ObtenerClienteId/' + id,
+            type: 'GET',
+            success: function (data) {
+                // Llenar el formulario con los datos del centro
+                $('#editClienteId').val(data.Id);
+                $('#editNombre').val(data.Nombre);
+                $('#editDireccion').val(data.Direccion);
+                $('#editTelefono').val(data.Telefono);
+                $('#editEmail').val(data.Email);
+                $('#editApellido').val(data.Apellido);
+                $('#editPreferencia').val(data.Preferencias);
+                $('#editNotas').val(data.Notas); 
+
+                // Suponiendo que data.FechaNacimiento es "/Date(1725771600000)/"
+                var fechaUnix = parseInt(data.FechaNacimiento.replace(/\/Date\((\d+)\)\//, '$1'));
+                var fecha = new Date(fechaUnix);
+
+                // Formatear la fecha a "yyyy-MM-dd"
+                var year = fecha.getFullYear();
+                var month = ('0' + (fecha.getMonth() + 1)).slice(-2);
+                var day = ('0' + fecha.getDate()).slice(-2);
+                var formattedDate = year + '-' + month + '-' + day;
+
+                // Asignar la fecha formateada al campo de entrada
+                $('#editFechaNacimiento').val(formattedDate);
+            },
+            error: function (xhr, status, error) {
+                alert("Error al cargar los datos del centro.");
+            }
+        });
+    });
+
+    function deleteCliente(id) {
+        if (confirm("¿Está seguro de que desea eliminar este cliente?")) {
+            $(document).ready(function () {
+                $.ajax({
+                    url: '/Administrador/EliminarCliente/' + id,
+                    type: 'POST',
+                    success: function (result) {
+                        location.reload();
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Ocurrió un error al eliminar el cliente.");
+                    }
+                });
+            })
+
+        }
+    }
+</script>

@@ -1,0 +1,478 @@
+﻿
+@{
+    ViewBag.Title = "Citas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div id="calendar"></div>
+</div>
+
+<div class="modal fade" id="editCitaModal" tabindex="-1" role="dialog" aria-labelledby="editCitaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editCitaModalLabel">Actualizar Cita</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="citaForm">
+                    <input type="hidden" class="form-control" id="editCitaId" name="editCitaId">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editCliente">Seleccione el Cliente</label>
+                            <select class="form-control" id="editCliente" name="cliente"></select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editTrabajador">Seleccione el Trabajador</label>
+                            <select class="form-control" id="editTrabajador" name="trabajador"></select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editCategoria">Categoria del Servicio</label>
+                            <select class="form-control"  id="editCategoria" name="categoria"></select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editServicio">Seleccionar un Servicio</label>
+                            <select class="form-control"  id="editServicio" name="servicio"></select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editFechaHoraInicio">Fecha y Hora de Inicio</label>
+                            <input type="datetime-local" class="form-control" id="editFechaHoraInicio" name="fechaHoraInicio" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editDuracion">Duración del Servicio</label>
+                            <input type="number" class="form-control" id="editDuracion" name="duracion" placeholder="Tiempo en minutos" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editNotas">Notas</label>
+                        <textarea class="form-control" id="editNotas" name="notas"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="actualizarCita">Agendar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="citaModal" tabindex="-1" role="dialog" aria-labelledby="citaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="citaModalLabel">Agendar Cita</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="citaForm">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="cliente">Seleccione el Cliente</label>
+                            <select class="form-control" id="cliente" name="cliente"></select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="trabajador">Seleccione el Trabajador</label>
+                            <select class="form-control" id="trabajador" name="trabajador"></select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="categoria">Categoria del Servicio</label>
+                            <select class="form-control" name="categoria" id="categoria"></select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="servicio">Seleccionar un Servicio</label>
+                            <select class="form-control" name="servicio" id="servicio"></select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="fechaHoraInicio">Fecha y Hora de Inicio</label>
+                            <input type="datetime-local" class="form-control" id="fechaHoraInicio" name="fechaHoraInicio" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="duracion">Duración del Servicio</label>
+                            <input type="number" class="form-control" id="duracion" name="duracion" placeholder="Tiempo en minutos" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notas">Notas</label>
+                        <textarea class="form-control" id="notas" name="notas"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="agendarCita">Agendar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="citaModalDetalle" tabindex="-1" role="dialog" aria-labelledby="citaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="citaModalLabel">Detalles de la Cita</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Cliente:</strong> <span id="clienteDetalle"></span></p>
+                <p><strong>Trabajador:</strong> <span id="trabajadorDetalle"></span></p>
+                <p><strong>Servicio:</strong> <span id="servicioDetalle"></span></p>
+                <p><strong>Fecha y Hora de Inicio:</strong> <span id="fechaHoraInicioDetalle"></span></p>
+                <p><strong>Fecha y Hora de Fin:</strong> <span id="fechaHoraFinDetalle"></span></p>
+                <p><strong>Duración:</strong> <span id="duracionDetalle"></span></p>
+                <p><strong>Notas:</strong> <span id="notasDetalle"></span></p>
+                <input type="hidden" class="form-control" id="cita-id" name="Id" />
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+                <button type="button" class="btn btn-danger" id="cancelarCita">Cancelar Cita</button>
+                <div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="editarCita">Editar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+    #calendar {
+        max-height: 90vh; /* Ajusta este valor según tus necesidades */
+        overflow-y: auto;
+        border: 1px solid #ddd; /* Borde alrededor del calendario */
+        padding: 10px;
+        background-color: #f9f9f9; /* Fondo claro para mejor visibilidad */
+    }
+
+    .fc-daygrid-day {
+        border: 1px solid #ddd; /* Bordes alrededor de cada día */
+    }
+
+    .fc-daygrid-day-top {
+        background-color: #f1f1f1; /* Fondo para la cabecera de cada día */
+        border-bottom: 1px solid #ddd;
+    }
+
+    .fc-day-today {
+        background-color: #e6f7ff; /* Fondo especial para el día actual */
+    }
+
+    .fc-event {
+        border: 1px solid #007bff; /* Bordes para los eventos */
+        background-color: #007bff; /* Fondo azul para los eventos */
+        color: #fff; /* Texto blanco para los eventos */
+    }
+</style>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales/es.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            locale: 'es',
+            initialView: 'dayGridMonth', // Vista predeterminada
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay' // Opciones de vista: mes, semana, día
+            },
+            selectable: true,
+            select: function (info) {
+                // Mostrar el modal al seleccionar una fecha
+                $('#citaModal').modal('show');
+                
+                $.getJSON('/Administrador/ObtenerCategorias', function (data) {
+                    var servicios = [];
+                    var count = 0;
+                    $.each(data, function (index, item) {
+                        $('#categoria').append($('<option>').text(item).attr('value', item));
+                        count++;
+                        if (count === data.length) {
+                            // Asegúrate de que categoriaSeleccionada tenga un valor válido
+                            var categoriaSeleccionada = $('#categoria').val();
+                            if (categoriaSeleccionada) {
+                                $.getJSON('/Administrador/GetServicios', { categoria: categoriaSeleccionada }, function (data) {
+                                    $('#servicio').empty(); // Vacía el selector antes de llenarlo
+                                    $.each(data, function (index, item) {
+                                        $('#servicio').append($('<option>').text(item.Nombre).attr('value', item.Nombre));
+                                    });
+                                });
+                            } else {
+                                console.error('No se ha seleccionado ninguna categoría.');
+                            }
+                        }
+                    });
+                });
+            
+
+                // Cargar clientes y trabajadores desde la base de datos
+                $.getJSON('/Administrador/GetClientes', function (data) {
+                    $('#cliente').empty();
+                    $.each(data, function (index, item) {
+                        $('#cliente').append($('<option>').text(item.Nombre).attr('value', item.Id));
+                    });
+                });
+
+                $.getJSON('/Administrador/GetPersonal', function (data) {
+                    $('#trabajador').empty();
+                    $.each(data, function (index, item) {
+                        $('#trabajador').append($('<option>').text(item.Nombre).attr('value', item.Id));
+                    });
+                });
+
+
+            },
+            events: function (info, successCallback, failureCallback) {
+                $.ajax({
+                    url: '/Administrador/ObtenerCitas',
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        var eventos = data.map(function (citas) {
+                            return {
+                                id: citas.Id,
+                                title: citas.Servicio,
+                                start: convertDate(citas.FechaHoraInicio),
+                                end: convertDate(citas.FechaHoraFin),
+                                backgroundColor: '#007bff', // Color del evento
+                                borderColor: '#007bff'
+                            };
+                        });
+                        console.log(eventos);
+                        successCallback(eventos);
+                    },
+                    error: function () {
+                        failureCallback();
+                    }
+                });
+            },
+
+            eventClick: function (info) {
+                var citaId = info.event.id;
+
+                // Obtener detalles de la cita
+                $.getJSON('/Administrador/ObtenerCitaPorId', { id: citaId }, function (data) {
+                    // Mostrar los detalles en la ventana modal
+                    $('#citaModalDetalle #clienteDetalle').text(data.NombreCliente);
+                    $('#citaModalDetalle #trabajadorDetalle').text(data.NombreTrabajador);
+                    $('#citaModalDetalle #servicioDetalle').text(data.Servicio);
+                    $('#citaModalDetalle #fechaHoraInicioDetalle').text(formatDate(data.FechaHoraInicio));
+                    $('#citaModalDetalle #fechaHoraFinDetalle').text(formatDate(data.FechaHoraFin));
+                    $('#citaModalDetalle #duracionDetalle').text(formatDuration(data.Duracion));
+                    $('#citaModalDetalle #notasDetalle').text(data.Notas);
+
+                    $('#citaModalDetalle').data('cita-id', citaId);
+
+                    $('#citaModalDetalle').modal('show');
+                });
+            }
+        });
+
+        calendar.render();
+
+        function convertDate(dotNetDate) {
+            var timestamp = parseInt(dotNetDate.replace(/\/Date\((.*?)\)\//, '$1'), 10);
+            var date = new Date(timestamp);
+            return date.toISOString();
+        }
+
+        function formatDate(dotNetDate) {
+            var timestamp = parseInt(dotNetDate.replace(/\/Date\((.*?)\)\//, '$1'), 10);
+            var date = new Date(timestamp);
+            return date.toLocaleString(); // Formato legible para usuarios
+        }
+
+        function formatDuration(duration) {
+            var minutes = duration.Minutes;
+            return minutes + ' minuto(s)';
+        }
+
+        $(document).ready(function () {
+            $('#categoria').change(function () {
+                var categoriaSeleccionada = $(this).val();
+                $.getJSON('/Administrador/GetServicios', { categoria: categoriaSeleccionada }, function (data) {
+                    $('#servicio').empty();
+                    $.each(data, function (index, item) {
+                        $('#servicio').append($('<option>').text(item.Nombre).attr('value', item.Nombre));
+                    });
+                });
+            });
+        });
+
+
+
+        $(document).on('click', '#editarCita', function () {
+            var citaId = $('#citaModalDetalle').data('cita-id');
+            $('#citaModalDetalle').modal('hide');
+
+            // Obtener datos de la cita para editar
+            $.getJSON('/Administrador/ObtenerCitaPorId', { id: citaId }, function (data) {
+                // Cargar los datos en el formulario de edición
+
+                console.log(data.Duracion);
+                $('#editCliente').empty();
+                $('#editServicio').empty();
+                $('#editCliente').append($('<option>').text(data.NombreCliente).attr('value', data.Cliente));
+                $('#editServicio').append($('<option>').text(data.Servicio).attr('value', data.Servicio));
+                $('#editDuracion').val(data.Duracion.TotalMinutes);
+                $('#editNotas').val(data.Notas);
+                $('#editCategoria').append($('<option>').text(data.Categoria).attr('value', data.Categoria));
+                $('#editCitaId').val(data.Id);
+
+                // Convertir la fecha
+                var fechaHoraInicio = new Date(parseInt(data.FechaHoraInicio.replace('/Date(', '').replace(')/', '')));
+                var fechaLocal = new Date(fechaHoraInicio.getTime() - fechaHoraInicio.getTimezoneOffset() * 60000);
+                var fechaFormateada = fechaLocal.toISOString().slice(0, 16); // Formato para input datetime-local
+                console.log(fechaFormateada);
+                $('#editFechaHoraInicio').val(fechaFormateada);
+
+
+                // Obtener y llenar el selector de trabajadores
+                $.getJSON('/Administrador/GetPersonal', function (personalData) {
+                    $('#editTrabajador').empty();
+                    $.each(personalData, function (index, item) {
+                        $('#editTrabajador').append($('<option>').text(item.Nombre).attr('value', item.Id));
+                    });
+
+                    // Asignar el valor al selector después de llenarlo
+                    $('#editTrabajador').val(data.Trabajador);
+                });
+
+                // Abrir el modal de edición
+                $('#editCitaModal').modal('show');
+            });
+        });
+
+        $('#agendarCita').click(function () {
+            var trabajadorId = $('#trabajador').val();
+            var fechaHoraInicio = $('#fechaHoraInicio').val();
+            var duracionMinutos = parseInt($('#duracion').val(), 10); // Asegurarse de que sea un número entero
+
+            // Convertir minutos a un formato de TimeSpan (HH:MM:SS)
+            var horas = Math.floor(duracionMinutos / 60);
+            var minutos = duracionMinutos % 60;
+            var duracion = horas + ':' + minutos + ':00';
+
+            // Verificar la disponibilidad del trabajador
+            $.getJSON('/Administrador/VerificarDisponibilidad', {
+                trabajadorId: trabajadorId,
+                fechaInicio: fechaHoraInicio,
+                duracion: duracion
+            }, function (data) {
+                if (data) {
+                    // Si está disponible, agendar la cita
+                    var cita = {
+                        cliente: $('#cliente').val(),
+                        trabajador: trabajadorId,
+                        servicio: $('#servicio').val(),
+                        fechaHoraInicio: fechaHoraInicio,
+                        duracion: duracion,
+                        notas: $('#notas').val(),
+                        categoria: $('#categoria').val()
+                    };
+
+                    $.ajax({
+                        url: '/Administrador/AgendarCita',
+                        method: 'POST',
+                        data: cita,
+                        success: function (response) {
+                            if (response.success) {
+                                alert('Cita agendada correctamente');
+                                $('#citaModal').modal('hide');
+                                calendar.refetchEvents(); // Refrescar el calendario
+                            }
+                        }
+                    });
+                } else {
+                    alert('El trabajador no está disponible en el horario seleccionado');
+                }
+            });
+        });
+
+        $('#actualizarCita').click(function () {
+            var citaId = $('#editCitaId').val();
+            var trabajadorId = $('#editTrabajador').val();
+            var fechaHoraInicio = $('#editFechaHoraInicio').val();
+            var duracionMinutos = parseInt($('#editDuracion').val(), 10); // Asegurarse de que sea un número entero
+
+            // Convertir minutos a un formato de TimeSpan (HH:MM:SS)
+            var horas = Math.floor(duracionMinutos / 60);
+            var minutos = duracionMinutos % 60;
+            var duracion = horas + ':' + minutos + ':00';
+
+            // Verificar la disponibilidad del trabajador
+            $.getJSON('/Administrador/VerificarDisponibilidad', {
+                trabajadorId: trabajadorId,
+                fechaInicio: fechaHoraInicio,
+                duracion: duracion
+            }, function (data) {
+                if (data) {
+                    // Si está disponible, agendar la cita
+                    var cita = {
+                        cliente: $('#editCliente').val(),
+                        trabajador: trabajadorId,
+                        servicio: $('#editServicio').val(),
+                        fechaHoraInicio: fechaHoraInicio,
+                        duracion: duracion,
+                        notas: $('#editNotas').val(),
+                        categoria: $('#editCategoria').val(),
+                        id: citaId
+                    };
+
+                    $.ajax({
+                        url: '/Administrador/ActualizarCita',
+                        method: 'POST',
+                        data: cita,
+                        success: function (response) {
+                            if (response.success) {
+                                alert('Cita actualizada correctamente');
+                                $('#editCitaModal').modal('hide');
+                                calendar.refetchEvents(); // Refrescar el calendario
+                            }
+                        }
+                    });
+                } else {
+                    alert('El trabajador no está disponible en el horario seleccionado');
+                }
+            });
+        });
+
+        $('#cancelarCita').click(function() {
+            var citaId = $('#citaModalDetalle').data('cita-id');
+            $.ajax({
+                url: '@Url.Action("EliminarCita", "Administrador")',
+                type: 'POST',
+                data: { id: citaId },
+                success: function(response) {
+                    if (response.success) {
+                        alert('Cita cancelada exitosamente.');
+                        location.reload();
+                    } else {
+                        alert('Error al cancelar la cita.');
+                    }
+                },
+                error: function() {
+                    alert('Error en la solicitud.');
+                }
+            });
+        });
+    });
+
+</script>

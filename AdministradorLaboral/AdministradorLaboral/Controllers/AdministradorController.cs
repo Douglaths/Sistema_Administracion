@@ -1626,6 +1626,54 @@ namespace AdministradorLaboral.Controllers
             }
         }
 
+        public ActionResult CitasHistorial(int userId, string userName, string userRole, int userCenter)
+        {
+            
+            ViewBag.UserId = userId;
+            ViewBag.UserName = userName;
+            ViewBag.UserRole = userRole;
+            ViewBag.UserCenter = userCenter;
+
+            List<Citas> citas = new List<Citas>();
+
+            using (SqlConnection con = new SqlConnection(conexionDB))
+            {
+                con.Open();
+                string query = "SELECT C.Id, C.Cliente, C.Trabajador, C.Categoria, C.Servicio, C.FechaHoraInicio, C.FechaHoraFin, C.Duracion, C.Notas, CL.Nombre AS NombreCliente, CL.Apellido AS ApellidoCliente, P.Nombre AS NombreTrabajador " +
+                               "FROM Citas C " +
+                               "INNER JOIN Clientes CL ON C.Cliente = CL.Id " +
+                               "INNER JOIN Personal P ON C.Trabajador = P.Id";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Citas cita = new Citas
+                            {
+                                Id = reader.GetInt32(0),
+                                Cliente = reader.GetInt32(1),
+                                Trabajador = reader.GetInt32(2),
+                                Categoria = reader.GetString(3),
+                                Servicio = reader.GetString(4),
+                                FechaHoraInicio = reader.GetDateTime(5),
+                                FechaHoraFin = reader.GetDateTime(6),
+                                Duracion = reader.GetTimeSpan(7),
+                                Notas = reader.GetString(8),
+                                NombreCliente = reader.GetString(9) + " " + reader.GetString(10), // Nombre y Apellido del Cliente
+                                NombreTrabajador = reader.GetString(11) // Nombre del Trabajador
+                            };
+                            citas.Add(cita);
+                        }
+                    }
+                }
+            }
+
+            return View(citas);
+        }
+
+
 
 
 

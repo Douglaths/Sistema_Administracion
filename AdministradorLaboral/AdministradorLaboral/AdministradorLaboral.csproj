@@ -267,6 +267,7 @@
     <Content Include="Views\Administrador\Clientes.cshtml" />
     <Content Include="Views\Administrador\Citas.cshtml" />
     <Content Include="Views\Administrador\Servicios.cshtml" />
+    <Content Include="Views\Administrador\CitasHistorial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

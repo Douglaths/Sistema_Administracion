@@ -1,0 +1,83 @@
+﻿@model IEnumerable<AdministradorLaboral.Models.Facturacion>
+
+@{
+    ViewBag.Title = "Historial de Facturación";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Historial de Facturación</h2>
+
+    <!-- Tabla de Facturas -->
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Servicio</th>
+                <th>Total</th>
+                <th>Fecha Emisión</th>
+                <th>Estado de Pago</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var factura in Model)
+            {
+                <tr>
+                    <td>@factura.Id</td>
+                    <td>@factura.Cita.NombreCliente</td>
+                    <td>@factura.Cita.Servicio</td>
+                    <td>@factura.Total.ToString("C")</td>
+                    <td>@factura.FechaEmision.ToShortDateString()</td>
+                    <td>
+                        @if (factura.Pagado)
+                        {
+                            <span class="badge badge-success">Pagado</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-warning">Pendiente</span>
+                        }
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <!-- Botón para marcar como pagado -->
+                            @if (!factura.Pagado)
+                            {
+                                <button class="btn btn-success btn-sm" onclick="marcarComoPagado(@factura.Id)">
+                                    Marcar como Pagado
+                                </button>
+                            }
+                            <!-- Botón para descargar el recibo -->
+                            @if (factura.Pagado)
+                            {
+                                <a href="@Url.Action("DescargarRecibo", "Facturacion", new { facturaId = factura.Id })" class="btn btn-primary btn-sm">
+                                    Descargar Recibo
+                                </a>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function marcarComoPagado(facturaId) {
+        if (confirm("¿Estás seguro de marcar esta factura como pagada?")) {
+            $.ajax({
+                url: '@Url.Action("MarcarComoPagado", "Facturacion")',
+                type: 'POST',
+                data: { facturaId: facturaId },
+                success: function () {
+                    location.reload();
+                },
+                error: function () {
+                    alert("Hubo un error al marcar la factura como pagada.");
+                }
+            });
+        }
+    }
+</script>

@@ -202,6 +202,7 @@
     <Compile Include="Models\Centro.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Citas.cs" />
+    <Compile Include="Models\Facturacion.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Personal.cs" />
     <Compile Include="Models\Servicio.cs" />
@@ -268,6 +269,8 @@
     <Content Include="Views\Administrador\Citas.cshtml" />
     <Content Include="Views\Administrador\Servicios.cshtml" />
     <Content Include="Views\Administrador\CitasHistorial.cshtml" />
+    <Content Include="Views\Administrador\FacturacionHistorial.cshtml" />
+    <Content Include="Views\Administrador\Facturacion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

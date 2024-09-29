@@ -1674,6 +1674,229 @@ namespace AdministradorLaboral.Controllers
         }
 
 
+        //AQUI ESTA FACUTACION ---------------- //
+
+        // Vista principal de facturación, muestra el listado de facturas
+            public ActionResult FacturacionHistorial(int userId, string userName, string userRole, int userCenter)
+            {
+            ViewBag.UserId = userId;
+            ViewBag.UserName = userName;
+            ViewBag.UserRole = userRole;
+            ViewBag.UserCenter = userCenter;
+
+            List<Facturacion> facturas = new List<Facturacion>();
+
+            using (SqlConnection con = new SqlConnection(conexionDB))
+            {
+                con.Open();
+
+                string query = @"
+                SELECT F.Id, F.CitaId, F.FechaEmision, F.Total, F.Pagado, F.MetodoPago, F.FechaPago, F.NumeroRecibo, F.Detalles, 
+                       CL.Nombre AS NombreCliente, CL.Apellido AS ApellidoCliente, P.Nombre AS NombreTrabajador
+                FROM Facturacion F
+                INNER JOIN Citas C ON F.CitaId = C.Id
+                INNER JOIN Clientes CL ON C.Cliente = CL.Id
+                INNER JOIN Personal P ON C.Trabajador = P.Id";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Facturacion factura = new Facturacion
+                            {
+                                Id = reader.GetInt32(0),
+                                CitaId = reader.GetInt32(1),
+                                FechaEmision = reader.GetDateTime(2),
+                                Total = reader.GetDecimal(3),
+                                Pagado = reader.GetBoolean(4),
+                                MetodoPago = reader.GetString(5),
+                                FechaPago = reader.IsDBNull(6) ? (DateTime?)null : reader.GetDateTime(6),
+                                NumeroRecibo = reader.GetString(7),
+                                Detalles = reader.GetString(8),
+                                Cita = new Citas
+                                {
+                                    NombreCliente = reader.GetString(9),
+                                    ApellidoCliente = reader.GetString(10),
+                                    NombreTrabajador = reader.GetString(11)
+                                }
+                            };
+                            facturas.Add(factura);
+                        }
+                    }
+                }
+            }
+            
+
+            return View("FacturacionHistorial", facturas);
+            }
+
+
+            public ActionResult Facturacion(int userId, string userName, string userRole, int userCenter)
+            {
+                ViewBag.UserId = userId;
+                ViewBag.UserName = userName;
+                ViewBag.UserRole = userRole;
+                ViewBag.UserCenter = userCenter;
+
+                // Lista para almacenar las citas
+                List<Citas> citas = new List<Citas>();
+
+                // Establecer conexión con la base de datos
+                using (SqlConnection con = new SqlConnection(conexionDB))
+                {
+                    con.Open();
+
+                    // Consulta SQL con INNER JOIN para obtener las citas y el nombre del cliente
+                    string query = @"
+                SELECT Citas.Id, Clientes.Nombre, Citas.Servicio 
+                FROM Citas 
+                INNER JOIN Clientes ON Citas.Cliente = Clientes.Id";
+
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            // Leer cada cita y agregarla a la lista
+                            while (reader.Read())
+                            {
+                                Citas cita = new Citas
+                                {
+                                    Id = reader.GetInt32(0),
+                                    NombreCliente = reader.GetString(1),  // Aquí estamos accediendo al nombre del cliente desde la tabla Clientes
+                                    Servicio = reader.GetString(2)
+                                };
+                                citas.Add(cita);
+                            }
+                        }
+                    }
+                }
+
+                // Pasar la lista de citas a la vista mediante ViewBag
+                ViewBag.Citas = citas;
+
+                // Retornar la vista Facturacion
+                return View("Facturacion");
+            }
+
+
+        [HttpPost]
+            public ActionResult CrearFactura(int citaId, decimal total, string metodoPago, string detalles, int userId, string userName, string userRole, int userCenter)
+            {
+                using (SqlConnection con = new SqlConnection(conexionDB))
+                {
+                    con.Open();
+
+                    // Consulta SQL para insertar una nueva factura
+                    string query = @"
+            INSERT INTO Facturacion (CitaId, FechaEmision, Total, Pagado, MetodoPago, NumeroRecibo, Detalles) 
+            VALUES (@CitaId, GETDATE(), @Total, 0, @MetodoPago, @NumeroRecibo, @Detalles)";
+
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        // Asignar parámetros a la consulta
+                        cmd.Parameters.AddWithValue("@CitaId", citaId);
+                        cmd.Parameters.AddWithValue("@Total", total);
+                        cmd.Parameters.AddWithValue("@MetodoPago", metodoPago);
+                        cmd.Parameters.AddWithValue("@NumeroRecibo", GenerarNumeroRecibo()); // Puedes crear una función que genere un número de recibo
+                        cmd.Parameters.AddWithValue("@Detalles", detalles);
+
+                        // Ejecutar la consulta
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                // Redirigir al historial de facturación después de crear la factura
+                return RedirectToAction("FacturacionHistorial", new { userId, userName, userRole, userCenter });
+            }
+
+
+        // Marcar una factura como pagada
+        [HttpPost]
+            public ActionResult MarcarComoPagado(int facturaId)
+            {
+                using (SqlConnection con = new SqlConnection(conexionDB))
+                {
+                    con.Open();
+                    string query = "UPDATE Facturacion SET Pagado = 1, FechaPago = GETDATE() WHERE Id = @FacturaId";
+
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@FacturaId", facturaId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                return RedirectToAction("FacturacionHistorial");
+            }
+
+            // Generar número de recibo aleatorio
+            private string GenerarNumeroRecibo()
+            {
+                return "REC-" + Guid.NewGuid().ToString().Substring(0, 8).ToUpper();
+            }
+
+            // Descargar recibo en PDF o cualquier formato
+            public ActionResult DescargarRecibo(int facturaId)
+            {
+                // Aquí puedes implementar la lógica para generar y descargar el recibo en formato PDF.
+                // Esto incluirá detalles de la factura, fecha de emisión, total y número de recibo.
+
+                // Ejemplo simplificado:
+                Facturacion factura = ObtenerFacturaPorId(facturaId);
+
+                if (factura == null)
+                {
+                    return HttpNotFound("Factura no encontrada.");
+                }
+
+                // Lógica para generar un PDF basado en los detalles de la factura
+                // (Puedes usar bibliotecas como iTextSharp para generar PDFs)
+
+                return View(factura); // Debe ser reemplazado por la descarga del archivo generado
+            }
+
+            // Obtener detalles de una factura por su Id
+            private Facturacion ObtenerFacturaPorId(int id)
+            {
+                Facturacion factura = null;
+
+                using (SqlConnection con = new SqlConnection(conexionDB))
+                {
+                    con.Open();
+                    string query = @"
+                SELECT F.Id, F.CitaId, F.FechaEmision, F.Total, F.Pagado, F.MetodoPago, F.FechaPago, F.NumeroRecibo, F.Detalles
+                FROM Facturacion F
+                WHERE F.Id = @Id";
+
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@Id", id);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                factura = new Facturacion
+                                {
+                                    Id = reader.GetInt32(0),
+                                    CitaId = reader.GetInt32(1),
+                                    FechaEmision = reader.GetDateTime(2),
+                                    Total = reader.GetDecimal(3),
+                                    Pagado = reader.GetBoolean(4),
+                                    MetodoPago = reader.GetString(5),
+                                    FechaPago = reader.IsDBNull(6) ? (DateTime?)null : reader.GetDateTime(6),
+                                    NumeroRecibo = reader.GetString(7),
+                                    Detalles = reader.GetString(8)
+                                };
+                            }
+                        }
+                    }
+                }
+
+                return factura;
+            }
+    
 
 
 

@@ -197,6 +197,21 @@
                 </div>
             </li>
             <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#facturacionSubmenu" role="button" aria-expanded="false" aria-controls="facturacionSubmenu">
+                    <i class="fas fa-building"></i> <span>Facturacion</span>
+                </a>
+                <div class="collapse" id="facturacionSubmenu" data-parent="#sidebar">
+                    <ul class="nav flex-column ml-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Facturacion","Administrador", new {userName = ViewBag.UserName, userId = ViewBag.userId, userCenter = ViewBag.userCenter, userRole = ViewBag.userRole})"><i class="fas fa-chart-bar"></i> <span>Facturacion</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("FacturacionHistorial","Administrador", new {userName = ViewBag.UserName, userId = ViewBag.userId, userCenter = ViewBag.userCenter, userRole = ViewBag.userRole})"><i class="fas fa-chart-bar"></i> <span>Historial de facturacion</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="@Url.Action("Servicios","Administrador", new {userName = ViewBag.UserName, userId = ViewBag.userId, userCenter = ViewBag.userCenter, userRole = ViewBag.userRole})"><i class="fas fa-chart-bar"></i> <span>Servicios</span></a>
             </li>
             <!-- Más opciones con submenús como el anterior -->

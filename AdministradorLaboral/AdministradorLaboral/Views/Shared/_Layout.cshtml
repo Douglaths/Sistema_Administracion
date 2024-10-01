@@ -123,7 +123,7 @@
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#dashboardSubmenu" role="button" aria-expanded="false" aria-controls="dashboardSubmenu">
-                    <i class="fas fa-chart-bar"></i> <span>DashBoard</span>
+                    <i class="fas fa-tachometer-alt"></i> <span>DashBoard</span>
                 </a>
                 <div class="collapse" id="dashboardSubmenu" data-parent="#sidebar">
                     <ul class="nav flex-column ml-3">
@@ -145,7 +145,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="@Url.Action("Centros","Administrador", new {userName = ViewBag.UserName, userId = ViewBag.userId, userCenter = ViewBag.userCenter, userRole = ViewBag.userRole})"><i class="fas fa-chart-bar"></i> <span>Registro Centro</span></a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item d-none">
                             <a class="nav-link" href="#"><i class="fas fa-chart-bar"></i> <span>Asignar Personal</span></a>
                         </li>
                     </ul>
@@ -153,7 +153,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#personalSubmenu" role="button" aria-expanded="false" aria-controls="personalSubmenu">
-                    <i class="fas fa-building"></i> <span>Personal</span>
+                    <i class="fas fa-id-badge"></i> <span>Personal</span>
                 </a>
                 <div class="collapse" id="personalSubmenu" data-parent="#sidebar">
                     <ul class="nav flex-column ml-3">
@@ -168,7 +168,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#clienteSubmenu" role="button" aria-expanded="false" aria-controls="clienteSubmenu">
-                    <i class="fas fa-building"></i> <span>Clientes</span>
+                    <i class="fas fa-users"></i> <span>Clientes</span>
                 </a>
                 <div class="collapse" id="clienteSubmenu" data-parent="#sidebar">
                     <ul class="nav flex-column ml-3">
@@ -183,7 +183,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#citasSubmenu" role="button" aria-expanded="false" aria-controls="citasSubmenu">
-                    <i class="fas fa-building"></i> <span>Citas</span>
+                    <i class="fas fa-calendar-alt"></i> <span>Citas</span>
                 </a>
                 <div class="collapse" id="citasSubmenu" data-parent="#sidebar">
                     <ul class="nav flex-column ml-3">
@@ -198,7 +198,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#facturacionSubmenu" role="button" aria-expanded="false" aria-controls="facturacionSubmenu">
-                    <i class="fas fa-building"></i> <span>Facturacion</span>
+                    <i class="fas fa-file-invoice-dollar"></i> <span>Facturacion</span>
                 </a>
                 <div class="collapse" id="facturacionSubmenu" data-parent="#sidebar">
                     <ul class="nav flex-column ml-3">
@@ -212,7 +212,16 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Servicios","Administrador", new {userName = ViewBag.UserName, userId = ViewBag.userId, userCenter = ViewBag.userCenter, userRole = ViewBag.userRole})"><i class="fas fa-chart-bar"></i> <span>Servicios</span></a>
+                <a class="nav-link" href="@Url.Action("Servicios","Administrador", new {userName = ViewBag.UserName, userId = ViewBag.userId, userCenter = ViewBag.userCenter, userRole = ViewBag.userRole})"><i class="fas fa-tools"></i> <span>Servicios</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Feedback","Administrador", new {userName = ViewBag.UserName, userId = ViewBag.userId, userCenter = ViewBag.userCenter, userRole = ViewBag.userRole})"><i class="fas fa-comments"></i> <span>FeedBack</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("FeedbackResumen","Administrador", new {userName = ViewBag.UserName, userId = ViewBag.userId, userCenter = ViewBag.userCenter, userRole = ViewBag.userRole})"><i class="fas fa-chart-line"></i> <span>FeedBack Resumen</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Promociones","Administrador", new {userName = ViewBag.UserName, userId = ViewBag.userId, userCenter = ViewBag.userCenter, userRole = ViewBag.userRole})"><i class="fas fa-chart-bar"></i> <span>Promos</span></a>
             </li>
             <!-- Más opciones con submenús como el anterior -->
         </ul>

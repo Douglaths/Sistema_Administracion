@@ -1896,8 +1896,265 @@ namespace AdministradorLaboral.Controllers
 
                 return factura;
             }
-    
 
+        //-----------------------------//_----------------------//--------------------------------------
+        //FEEDBACK MODULO
+
+            public ActionResult Feedback(int userId, string userName, string userRole, int userCenter)
+            {
+                ViewBag.UserId = userId;
+                ViewBag.UserName = userName;
+                ViewBag.UserRole = userRole;
+                ViewBag.UserCenter = userCenter;
+
+                // Lista para almacenar las citas y trabajadores
+                List<Citas> citas = new List<Citas>();
+                List<Personal> trabajadores = new List<Personal>();
+
+                using (SqlConnection con = new SqlConnection(conexionDB))
+                {
+                    con.Open();
+
+                    // Obtener citas del cliente
+                    string queryCitas = @"
+                SELECT Citas.Id, Clientes.Nombre AS NombreCliente, Citas.Servicio 
+                FROM Citas 
+                INNER JOIN Clientes ON Citas.Cliente = Clientes.Id";
+
+                    using (SqlCommand cmd = new SqlCommand(queryCitas, con))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                citas.Add(new Citas
+                                {
+                                    Id = reader.GetInt32(0),
+                                    NombreCliente = reader.GetString(1),
+                                    Servicio = reader.GetString(2)
+                                });
+                            }
+                        }
+                    }
+
+                    // Obtener trabajadores
+                    string queryTrabajadores = "SELECT Id, Nombre FROM Personal";
+                    using (SqlCommand cmdTrabajadores = new SqlCommand(queryTrabajadores, con))
+                    {
+                        using (SqlDataReader readerTrabajadores = cmdTrabajadores.ExecuteReader())
+                        {
+                            while (readerTrabajadores.Read())
+                            {
+                                trabajadores.Add(new Personal
+                                {
+                                    Id = readerTrabajadores.GetInt32(0),
+                                    Nombre = readerTrabajadores.GetString(1)
+                                });
+                            }
+                        }
+                    }
+                }
+
+                // Pasar las citas y trabajadores a la vista
+                ViewBag.Citas = citas;
+                ViewBag.Trabajadores = trabajadores;
+
+                return View();
+            }
+
+            [HttpPost]
+            public ActionResult CrearFeedback(Feedback feedback)
+            {
+                if (ModelState.IsValid)
+                {
+                    using (SqlConnection con = new SqlConnection(conexionDB))
+                    {
+                        con.Open();
+
+                        string query = @"
+                    INSERT INTO Feedback (ClienteId, TrabajadorId, CitaId, Calificacion, Comentario, Fecha)
+                    VALUES (@ClienteId, @TrabajadorId, @CitaId, @Calificacion, @Comentario, GETDATE())";
+
+                        using (SqlCommand cmd = new SqlCommand(query, con))
+                        {
+                            cmd.Parameters.AddWithValue("@ClienteId", feedback.ClienteId);
+                            cmd.Parameters.AddWithValue("@TrabajadorId", feedback.TrabajadorId);
+                            cmd.Parameters.AddWithValue("@CitaId", feedback.CitaId);
+                            cmd.Parameters.AddWithValue("@Calificacion", feedback.Calificacion);
+                            cmd.Parameters.AddWithValue("@Comentario", feedback.Comentario);
+
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    return RedirectToAction("Feedback");
+                }
+
+                return View(feedback);
+            }
+
+        // ---------- ahora para el feedback resumen
+            public ActionResult FeedbackResumen(int userId, string userName, string userRole, int userCenter, int? trabajadorId, string servicio)
+            {
+                ViewBag.UserId = userId;
+                ViewBag.UserName = userName;
+                ViewBag.UserRole = userRole;
+                ViewBag.UserCenter = userCenter;
+
+                // Lista para almacenar los feedbacks
+                List<Feedback> feedbacks = new List<Feedback>();
+
+                using (SqlConnection con = new SqlConnection(conexionDB))
+                {
+                    con.Open();
+
+                    // Consulta SQL para obtener el feedback con joins para obtener datos de clientes y trabajadores
+                    string query = @"
+                SELECT F.Id, C.Nombre AS NombreCliente, P.Nombre AS NombreTrabajador, F.Calificacion, F.Comentario, F.Fecha, Citas.Servicio
+                FROM Feedback F
+                INNER JOIN Clientes C ON F.ClienteId = C.Id
+                INNER JOIN Personal P ON F.TrabajadorId = P.Id
+                INNER JOIN Citas ON F.CitaId = Citas.Id
+                WHERE (@TrabajadorId IS NULL OR P.Id = @TrabajadorId)
+                AND (@Servicio IS NULL OR Citas.Servicio = @Servicio)";
+
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@TrabajadorId", trabajadorId.HasValue ? (object)trabajadorId.Value : DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Servicio", string.IsNullOrEmpty(servicio) ? (object)DBNull.Value : servicio);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                feedbacks.Add(new Feedback
+                                {
+                                    Id = reader.GetInt32(0),
+                                    NombreCliente = reader.GetString(1),
+                                    NombreTrabajador = reader.GetString(2),
+                                    Calificacion = reader.GetInt32(3),
+                                    Comentario = reader.GetString(4),
+                                    Fecha = reader.GetDateTime(5),
+                                    Servicio = reader.GetString(6)
+                                });
+                            }
+                        }
+                    }
+                }
+
+                // Cargar trabajadores y servicios para los filtros
+                List<Personal> trabajadores = new List<Personal>();
+                List<string> servicios = new List<string>();
+
+                using (SqlConnection con = new SqlConnection(conexionDB))
+                {
+                    con.Open();
+
+                    // Obtener lista de trabajadores
+                    string queryTrabajadores = "SELECT Id, Nombre FROM Personal";
+                    using (SqlCommand cmd = new SqlCommand(queryTrabajadores, con))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                trabajadores.Add(new Personal
+                                {
+                                    Id = reader.GetInt32(0),
+                                    Nombre = reader.GetString(1)
+                                });
+                            }
+                        }
+                    }
+
+                    // Obtener lista de servicios
+                    string queryServicios = "SELECT DISTINCT Servicio FROM Citas";
+                    using (SqlCommand cmd = new SqlCommand(queryServicios, con))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                servicios.Add(reader.GetString(0));
+                            }
+                        }
+                    }
+                }
+
+                ViewBag.Trabajadores = trabajadores;
+                ViewBag.Servicios = servicios;
+
+                return View(feedbacks);
+            }
+
+        //-----------------------------//_----------------------//--------------------------------------
+        //PROMOCIONES MODULO
+
+            public ActionResult Promociones(int userId, string userName, string userRole, int userCenter)
+            {
+                ViewBag.UserId = userId;
+                ViewBag.UserName = userName;
+                ViewBag.UserRole = userRole;
+                ViewBag.UserCenter = userCenter;
+
+                List<Promocion> promociones = new List<Promocion>();
+
+                using (SqlConnection con = new SqlConnection(conexionDB))
+                {
+                    con.Open();
+                    string query = "SELECT Id, Nombre, Descripcion, PorcentajeDescuento, FechaInicio, FechaFin, Servicio, Activo FROM Promociones";
+
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                promociones.Add(new Promocion
+                                {
+                                    Id = reader.GetInt32(0),
+                                    Nombre = reader.GetString(1),
+                                    Descripcion = reader.GetString(2),
+                                    PorcentajeDescuento = reader.GetDecimal(3),
+                                    FechaInicio = reader.GetDateTime(4),
+                                    FechaFin = reader.GetDateTime(5),
+                                    Servicio = reader.IsDBNull(6) ? null : reader.GetString(6),
+                                    Activo = reader.GetBoolean(7)
+                                });
+                            }
+                        }
+                    }
+                }
+
+                return View(promociones);
+            }
+
+            [HttpPost]
+            public ActionResult CrearPromocion(Promocion promocion)
+            {
+                using (SqlConnection con = new SqlConnection(conexionDB))
+                {
+                    con.Open();
+                    string query = @"
+                    INSERT INTO Promociones (Nombre, Descripcion, PorcentajeDescuento, FechaInicio, FechaFin, Servicio, Activo) 
+                    VALUES (@Nombre, @Descripcion, @PorcentajeDescuento, @FechaInicio, @FechaFin, @Servicio, 1)";
+
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@Nombre", promocion.Nombre);
+                        cmd.Parameters.AddWithValue("@Descripcion", promocion.Descripcion ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@PorcentajeDescuento", promocion.PorcentajeDescuento);
+                        cmd.Parameters.AddWithValue("@FechaInicio", promocion.FechaInicio);
+                        cmd.Parameters.AddWithValue("@FechaFin", promocion.FechaFin);
+                        cmd.Parameters.AddWithValue("@Servicio", string.IsNullOrEmpty(promocion.Servicio) ? (object)DBNull.Value : promocion.Servicio);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                // Redirigir nuevamente a la vista de Promociones para ver la lista actualizada
+                return RedirectToAction("Promociones", new { userId = ViewBag.UserId, userName = ViewBag.UserName, userRole = ViewBag.UserRole, userCenter = ViewBag.UserCenter });
+            }
 
 
 

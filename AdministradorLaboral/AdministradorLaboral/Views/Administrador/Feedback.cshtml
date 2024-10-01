@@ -1,0 +1,50 @@
+﻿@model AdministradorLaboral.Models.Feedback
+
+@{
+    ViewBag.Title = "Dar Feedback";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Dejar Feedback</h2>
+
+    <form method="post" action="@Url.Action("CrearFeedback", "Administrador")">
+        <div class="form-group">
+            <label for="citaId">Cita</label>
+            <select class="form-control" id="citaId" name="CitaId" required>
+                @foreach (var cita in ViewBag.Citas)
+                {
+                    <option value="@cita.Id">@cita.NombreCliente - @cita.Servicio</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="trabajadorId">Trabajador</label>
+            <select class="form-control" id="trabajadorId" name="TrabajadorId" required>
+                @foreach (var trabajador in ViewBag.Trabajadores)
+                {
+                    <option value="@trabajador.Id">@trabajador.Nombre</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="calificacion">Calificación (1-5)</label>
+            <select class="form-control" id="calificacion" name="Calificacion" required>
+                <option value="1">1 - Muy malo</option>
+                <option value="2">2 - Malo</option>
+                <option value="3">3 - Regular</option>
+                <option value="4">4 - Bueno</option>
+                <option value="5">5 - Excelente</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="comentario">Comentario</label>
+            <textarea class="form-control" id="comentario" name="Comentario" rows="4" placeholder="Escriba su comentario aquí..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar Feedback</button>
+    </form>
+</div>

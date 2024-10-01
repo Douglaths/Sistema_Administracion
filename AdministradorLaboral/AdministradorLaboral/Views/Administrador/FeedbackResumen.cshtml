@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AdministradorLaboral.Models.Feedback>
+
+@{
+    ViewBag.Title = "Resumen de Feedback";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Resumen de Feedback</h2>
+
+    <form method="get" action="@Url.Action("FeedbackResumen", "Administrador")" class="form-inline mb-3">
+        <div class="form-group mr-2">
+            <label for="filtroTrabajador" class="mr-2">Filtrar por Trabajador:</label>
+            <select class="form-control" id="filtroTrabajador" name="trabajadorId">
+                <option value="">Todos</option>
+                @foreach (var trabajador in ViewBag.Trabajadores)
+                {
+                    <option value="@trabajador.Id">@trabajador.Nombre</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group mr-2">
+            <label for="filtroServicio" class="mr-2">Filtrar por Servicio:</label>
+            <select class="form-control" id="filtroServicio" name="servicio">
+                <option value="">Todos</option>
+                @foreach (var servicio in ViewBag.Servicios)
+                {
+                    <option value="@servicio">@servicio</option>
+                }
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+    </form>
+
+    <!-- Tabla de Feedback -->
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Trabajador</th>
+                <th>Servicio</th>
+                <th>Calificación</th>
+                <th>Comentario</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var feedback in Model)
+            {
+                <tr>
+                    <td>@feedback.NombreCliente</td>
+                    <td>@feedback.NombreTrabajador</td>
+                    <td>@feedback.Servicio</td>
+                    <td>@feedback.Calificacion</td>
+                    <td>@feedback.Comentario</td>
+                    <td>@feedback.Fecha.ToString("dd/MM/yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

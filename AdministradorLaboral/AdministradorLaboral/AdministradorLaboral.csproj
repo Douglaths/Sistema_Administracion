@@ -203,8 +203,10 @@
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Citas.cs" />
     <Compile Include="Models\Facturacion.cs" />
+    <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Personal.cs" />
+    <Compile Include="Models\Promocion.cs" />
     <Compile Include="Models\Servicio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -271,6 +273,9 @@
     <Content Include="Views\Administrador\CitasHistorial.cshtml" />
     <Content Include="Views\Administrador\FacturacionHistorial.cshtml" />
     <Content Include="Views\Administrador\Facturacion.cshtml" />
+    <Content Include="Views\Administrador\Feedback.cshtml" />
+    <Content Include="Views\Administrador\FeedbackResumen.cshtml" />
+    <Content Include="Views\Administrador\Promociones.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

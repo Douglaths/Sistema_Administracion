@@ -125,6 +125,38 @@
     </div>
 </div>
 
+
+<div class="modal fade" id="clienteProfileModal" tabindex="-1" role="dialog" aria-labelledby="clienteProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="clienteProfileModalLabel">Perfil del Cliente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                                     
+                    <div class="col-md-8">
+                        <p><strong>Nombres:</strong> <span id="clienteName"></span></p>
+                        <p><strong>Apellido:</strong> <span id="clienteApellido"></span></p>
+                        <p><strong>Teléfono:</strong> <span id="clientePhone"></span></p>
+                        <p><strong>Email:</strong> <span id="clienteEmail"></span></p>
+                        <p><strong>Dirección:</strong> <span id="clienteAddress"></span></p>
+                        <p><strong>Fecha de Nacimiento:</strong> <span id="clienteDOB"></span></p>
+                        <p><strong>Preferencias:</strong> <span id="clientePreferencias"></span></p>
+                        <p><strong>Notas:</strong> <span id="clienteNotas"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="editClienteModal" tabindex="-1" role="dialog" aria-labelledby="editClienteModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -201,6 +233,44 @@
 <!-- Incluye Bootstrap JS -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+
+
+<script>
+    $(document).ready(function () {
+        $('#clienteProfileModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Botón que activó el modal
+            var id = button.data('id'); // Obtén el ID del Cliente
+            var modal = $(this);
+
+            $.ajax({
+                url: '/Administrador/ObtenerPerfilCliente', // URL del método en el controlador
+                type: 'GET',
+                data: { id: id },
+                success: function (data) {
+               
+                    // Cargar el resto de la información del Cliente
+                    modal.find('#clienteName').text(data.Nombre);
+                    modal.find('#clienteApellido').text(data.Apellido);
+                    modal.find('#clientePhone').text(data.Telefono);
+                    modal.find('#clienteEmail').text(data.Email);
+                    modal.find('#clienteAddress').text(data.Direccion);
+                    modal.find('#clienteDOB').text(new Date(data.FechaNacimiento).toLocaleDateString());
+                    modal.find('#clientePreferencias').text(data.Preferencias);
+                    modal.find('#clienteNotas').text(data.Notas);
+                    
+                  
+                },
+                error: function () {
+                    alert('Error al cargar la información del Cliente.');
+                }
+            });
+        });
+    });
+
+
+</script>
+
+
 <script>
     $('#editClienteModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget); // Botón que abrió el modal
@@ -219,7 +289,7 @@
                 $('#editEmail').val(data.Email);
                 $('#editApellido').val(data.Apellido);
                 $('#editPreferencia').val(data.Preferencias);
-                $('#editNotas').val(data.Notas); 
+                $('#editNotas').val(data.Notas);
 
                 // Suponiendo que data.FechaNacimiento es "/Date(1725771600000)/"
                 var fechaUnix = parseInt(data.FechaNacimiento.replace(/\/Date\((\d+)\)\//, '$1'));

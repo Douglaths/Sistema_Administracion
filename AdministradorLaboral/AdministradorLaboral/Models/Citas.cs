@@ -7,6 +7,7 @@ namespace AdministradorLaboral.Models
 {
     public class Citas
     {
+
         public int Id { get; set; }
         public int Cliente { get; set; }
         public string NombreCliente { get; set; }
@@ -17,6 +18,7 @@ namespace AdministradorLaboral.Models
         public DateTime FechaHoraInicio { get; set; }
         public DateTime FechaHoraFin { get; set; }
         public TimeSpan Duracion { get; set; }
+        public string Estado { get; set; }
         public string Notas { get; set; }
 
 

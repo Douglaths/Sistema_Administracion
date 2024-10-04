@@ -1,0 +1,313 @@
+﻿@model IEnumerable<AdministradorLaboral.Models.Citas>
+@{
+    ViewBag.Title = "Historial de Citas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container mt-4">
+    <h2 class="mb-4">Historial de Citas</h2>
+    <!-- Tabla de Historial de Citas -->
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Trabajador</th>
+                <th>Categoría</th>
+                <th>Servicio</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Duración</th>
+                <th>Estado</th>
+                <th>Notas</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cita in Model)
+            {
+                <tr>
+                    <td>@cita.Id</td>
+                    <td>@cita.NombreCliente</td>
+                    <td>@cita.NombreTrabajador</td>
+                    <td>@cita.Categoria</td>
+                    <td>@cita.Servicio</td>
+                    <td>@cita.FechaHoraInicio.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@cita.FechaHoraFin.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@cita.Duracion.ToString(@"hh\:mm")</td>
+                    <td>
+                        @{string badgeClass = "";
+                            string badgeText = "";
+
+                            switch (@cita.Estado)
+                            {
+                                case "0":
+                                    badgeClass = "badge badge-danger";
+                                    badgeText = "Cancelado";
+                                    break;
+                                case "1":
+                                    badgeClass = "badge badge-dark";
+                                    badgeText = "Eliminado";
+                                    break;
+                                case "2":
+                                    badgeClass = "badge badge-info";
+                                    badgeText = "Agendado";
+                                    break;
+                                case "3":
+                                    badgeClass = "badge badge-primary";
+                                    badgeText = "Notificado";
+                                    break;
+                                case "4":
+                                    badgeClass = "badge badge-warning";
+                                    badgeText = "Confirmado";
+                                    break;
+                                case "5":
+                                    badgeClass = "badge badge-warning";
+                                    badgeText = "En proceso";
+                                    break;
+                                case "6":
+                                    badgeClass = "badge badge-secondary";
+                                    badgeText = "Pendiente de pago";
+                                    break;
+                                case "7":
+                                    badgeClass = "badge badge-success";
+                                    badgeText = "Pagado";
+                                    break;
+                                default:
+                                    badgeClass = "badge badge-secondary";
+                                    badgeText = "Estado desconocido";
+                                    break;
+                            }
+                        }
+
+                        <span class="@badgeClass">@badgeText</span>
+                    </td>
+                    <td>@cita.Notas</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Acciones">
+                            <!-- Botón Editar Cita -->
+                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editCitaModal" data-id="@cita.Id">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <div style="width: 10px;"></div>
+                            <!-- Botón Eliminar Cita -->
+                            <button class="btn btn-danger btn-sm" onclick="deleteCita(@cita.Id)">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                            <div style="width: 10px;"></div>
+                            <!-- Botón Iniciar/Finalizar Cita -->
+                            <button class="btn btn-warning btn-sm" onclick="deleteCita(@cita.Id)">
+                                <i class="fas fa-check"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="editCitaModal" tabindex="-1" role="dialog" aria-labelledby="editCitaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editCitaModalLabel">Actualizar Cita</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="citaForm">
+                    <input type="hidden" class="form-control" id="editCitaId" name="editCitaId">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editCliente">Seleccione el Cliente</label>
+                            <select class="form-control" id="editCliente" name="cliente"></select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editTrabajador">Seleccione el Trabajador</label>
+                            <select class="form-control" id="editTrabajador" name="trabajador"></select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editCategoria">Categoria del Servicio</label>
+                            <select class="form-control" id="editCategoria" name="categoria"></select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editServicio">Seleccionar un Servicio</label>
+                            <select class="form-control" id="editServicio" name="servicio"></select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editFechaHoraInicio">Fecha y Hora de Inicio</label>
+                            <input type="datetime-local" class="form-control" id="editFechaHoraInicio" name="fechaHoraInicio" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editDuracion">Duración del Servicio</label>
+                            <input type="number" class="form-control" id="editDuracion" name="duracion" placeholder="Tiempo en minutos" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editNotas">Notas</label>
+                        <textarea class="form-control" id="editNotas" name="notas"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="actualizarCita">Agendar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Mostrar modal para editar cita con los datos obtenidos por AJAX
+    $('#editCitaModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Botón que abrió el modal
+        var id = button.data('id'); // Obtener el ID de la cita desde el botón
+        $.getJSON('/Administrador/ObtenerCategorias', function (data) {
+            var servicios = [];
+            var count = 0;
+            $.each(data, function (index, item) {
+                $('#editCategoria').append($('<option>').text(item).attr('value', item));
+                count++;
+                if (count === data.length) {
+                    // Asegúrate de que categoriaSeleccionada tenga un valor válido
+                    var categoriaSeleccionada = $('#editCategoria').val();
+                    if (categoriaSeleccionada) {
+                        $.getJSON('/Administrador/GetServicios', { categoria: categoriaSeleccionada }, function (data) {
+                            $('#editServicio').empty(); // Vacía el selector antes de llenarlo
+                            $.each(data, function (index, item) {
+                                $('#editServicio').append($('<option>').text(item.Nombre).attr('value', item.Nombre));
+                            });
+                        });
+                    } else {
+                        console.error('No se ha seleccionado ninguna categoría.');
+                    }
+                }
+            });
+        });
+        // Realizar una solicitud AJAX para obtener los datos de la cita
+        $.ajax({
+            url: '/Administrador/ObtenerCitaPorId/' + id,
+            type: 'GET',
+            success: function (data) {
+                //CLIENTES Y TRABAJADORES SE CARGA AQUI
+                $.getJSON('/Administrador/GetClientes', function (data) {
+                    $('#editCliente').empty();
+                    $.each(data, function (index, item) {
+                        $('#editCliente').append($('<option>').text(item.Nombre).attr('value', item.Id));
+                    });
+                });
+
+                $.getJSON('/Administrador/GetPersonal', function (data) {
+                    $('#editTrabajador').empty();
+                    $.each(data, function (index, item) {
+                        $('#editTrabajador').append($('<option>').text(item.Nombre).attr('value', item.Id));
+                    });
+                });
+
+                // Llenar los campos del modal con los datos obtenidos
+                $('#editCitaId').val(data.Id);
+                $('#editServicio').val(data.Servicio);
+                $('#editCategoria').val(data.Categoria);
+
+                $.getJSON('/Administrador/ObtenerCitaPorId/', function (data) {
+                    // Obtener el valor de FechaHoraInicio en milisegundos
+                    let fechaInicioMilisegundos = parseInt(data.FechaHoraInicio.replace(/[^0-9]/g, ''), 10);
+
+                    // Convertir a objeto Date
+                    let fechaInicio = new Date(fechaInicioMilisegundos);
+
+                    // Formatear la fecha a un formato legible (dd/mm/yyyy hh:mm:ss)
+                    let fechaFormateada = fechaInicio.toLocaleString();
+
+                    // Mostrar la fecha en el elemento con id "fechaInicio"
+                    $('#editFechaHoraInicio').ToString("dd/MM/yyyy HH:mm")(fechaFormateada);
+                });
+
+
+                // Formatear y asignar la duración
+                $('#editDuracion').val(data.Duracion.substring(0, 5)); // Cortar a HH:MM
+
+                $('#editNotas').val(data.Notas);
+
+
+            },
+            error: function () {
+                alert("Error al cargar los datos de la cita.");
+            }
+        });
+    });
+
+    // Actualizar cita mediante AJAX cuando se hace clic en "Guardar Cambios"
+
+    $('#actualizarCita').click(function () {
+        var citaId = $('#editCitaId').val();
+        var trabajadorId = $('#editTrabajador').val();
+        var fechaHoraInicio = $('#editFechaHoraInicio').val();
+        var duracionMinutos = parseInt($('#editDuracion').val(), 10); // Asegurarse de que sea un número entero
+
+        // Convertir minutos a un formato de TimeSpan (HH:MM:SS)
+        var horas = Math.floor(duracionMinutos / 60);
+        var minutos = duracionMinutos % 60;
+        var duracion = horas + ':' + minutos + ':00';
+
+        // Verificar la disponibilidad del trabajador
+        $.getJSON('/Administrador/VerificarDisponibilidad', {
+            trabajadorId: trabajadorId,
+            fechaInicio: fechaHoraInicio,
+            duracion: duracion
+        }, function (data) {
+            if (data) {
+                // Si está disponible, agendar la cita
+                var cita = {
+                    cliente: $('#editCliente').val(),
+                    trabajador: trabajadorId,
+                    servicio: $('#editServicio').val(),
+                    fechaHoraInicio: fechaHoraInicio,
+                    duracion: duracion,
+                    notas: $('#editNotas').val(),
+                    categoria: $('#editCategoria').val(),
+                    id: citaId
+                };
+
+                $.ajax({
+                    url: '/Administrador/ActualizarCita',
+                    method: 'POST',
+                    data: cita,
+                    success: function (response) {
+                        if (response.success) {
+                            alert('Cita actualizada correctamente');
+                            $('#editCitaModal').modal('hide');
+                            location.reload();
+                           
+                        }
+                    }
+                });
+            } else {
+                alert('El trabajador no está disponible en el horario seleccionado');
+            }
+        });
+    });
+
+    // Eliminar cita con confirmación
+    function deleteCita(id) {
+        if (confirm("¿Está seguro de que desea eliminar esta cita?")) {
+            $.ajax({
+                url: '/Administrador/EliminarCita/' + id,
+                type: 'POST',
+                success: function (result) {
+                    location.reload();
+                },
+                error: function () {
+                    alert("Ocurrió un error al eliminar la cita.");
+                }
+            });
+        }
+    }
+</script>

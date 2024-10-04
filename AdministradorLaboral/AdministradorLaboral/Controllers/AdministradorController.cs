@@ -12,6 +12,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Net;
 using System.Web.Http.Cors;
+using System.Web.Helpers;
 
 
 namespace AdministradorLaboral.Controllers
@@ -28,7 +29,7 @@ namespace AdministradorLaboral.Controllers
 
         //DashBoard
         public ActionResult AdminDashboard(int userId, string userName, string userRole, int userCenter)
-        {            
+        {
 
             ViewBag.UserId = userId;
             ViewBag.UserName = userName;
@@ -79,7 +80,7 @@ namespace AdministradorLaboral.Controllers
                     Console.WriteLine(ex.Message);
                 }
             }
-            
+
             ViewBag.UserId = userId;
             ViewBag.UserName = userName;
             ViewBag.UserRole = userRole;
@@ -96,7 +97,7 @@ namespace AdministradorLaboral.Controllers
                 // Si el modelo no es válido, vuelve a mostrar el formulario
                 return View(centro);
             }
-            
+
             // Insertar datos en la base de datos
             using (SqlConnection connection = new SqlConnection(conexionDB))
             {
@@ -210,7 +211,7 @@ namespace AdministradorLaboral.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+
 
                 using (SqlConnection connection = new SqlConnection(conexionDB))
                 {
@@ -233,7 +234,7 @@ namespace AdministradorLaboral.Controllers
                     }
                 }
 
-                return RedirectToAction("Centros", new { userName = usuario, userId = idUser, userCenter =  centros, userRole = role }); // Redirigir a la vista de lista de centros
+                return RedirectToAction("Centros", new { userName = usuario, userId = idUser, userCenter = centros, userRole = role }); // Redirigir a la vista de lista de centros
             }
 
             return View(model); // Mostrar el formulario con errores
@@ -408,7 +409,7 @@ namespace AdministradorLaboral.Controllers
                             Experiencia = reader.GetString(9),
                             Certificaciones = reader.GetString(10),
                             Horarios = reader.GetString(11)
-                            
+
                         };
                         personales.Add(personal);
                     }
@@ -557,8 +558,8 @@ namespace AdministradorLaboral.Controllers
                     cmd.Parameters.AddWithValue("@Email", model.Email);
                     cmd.Parameters.AddWithValue("@FechaNacimiento", model.FechaNacimiento);
                     cmd.Parameters.AddWithValue("@Especializacion", model.Especializacion);
-                    cmd.Parameters.AddWithValue("@Certificaciones", model.Certificaciones); 
-                    cmd.Parameters.AddWithValue("@Foto", imagenData); 
+                    cmd.Parameters.AddWithValue("@Certificaciones", model.Certificaciones);
+                    cmd.Parameters.AddWithValue("@Foto", imagenData);
                     cmd.Parameters.AddWithValue("@HorariosOperacion", model.Horarios);
                     cmd.Parameters.AddWithValue("@Genero", model.Genero);
                     cmd.Parameters.AddWithValue("@Experiencia", model.Experiencia);
@@ -791,6 +792,59 @@ namespace AdministradorLaboral.Controllers
             return View(model); // Mostrar el formulario con errores
         }
 
+        public async Task<ActionResult> ObtenerPerfilCliente(int id)
+        {
+            if (id <= 0)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "ID inválido.");
+            }
+
+            try
+            {
+                using (var connection = new SqlConnection(conexionDB))
+                {
+                    await connection.OpenAsync();
+                    var query = "SELECT * FROM Clientes WHERE Id = @Id";
+                    using (var command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Id", id);
+
+                        using (var reader = await command.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+
+                                var cliente = new
+                                {
+                                    Nombre = reader["Nombre"].ToString(),
+                                    Apellido = reader["Apellido"].ToString(),
+                                    Telefono = reader["Telefono"].ToString(),
+                                    Email = reader["Email"].ToString(),
+                                    Direccion = reader["Direccion"].ToString(),
+                                    FechaNacimiento = reader["FechaNacimiento"],
+                                    Preferencias = reader["Preferencias"].ToString(),
+                                    Notas = reader["Notas"].ToString(),
+                                    
+                                };
+
+                                return Json(cliente, JsonRequestBehavior.AllowGet);
+                            }
+                            else
+                            {
+                                return HttpNotFound("cliente no encontrado.");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Registra el error o maneja la excepción como corresponda
+                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, $"Error interno del servidor: {ex.Message}");
+            }
+        }
+
+
         //-------------//-----------------//---------------//---------------//------------------//-----------------//-----------//
 
         //Clientes
@@ -1017,7 +1071,7 @@ namespace AdministradorLaboral.Controllers
             using (SqlConnection con = new SqlConnection(conexionDB))
             {
                 con.Open();
-                string query = "SELECT Id, Cliente, Trabajador, Servicio, FechaHoraInicio, FechaHoraFin, Duracion, Notas FROM Citas";
+                string query = "SELECT Id, Cliente, Trabajador, Servicio, FechaHoraInicio, FechaHoraFin, Duracion, Notas, Estado, Categoria FROM Citas";
 
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
@@ -1034,7 +1088,9 @@ namespace AdministradorLaboral.Controllers
                                 FechaHoraInicio = reader.GetDateTime(4),
                                 FechaHoraFin = reader.GetDateTime(5),
                                 Duracion = reader.GetTimeSpan(6),
-                                Notas = reader.GetString(7)
+                                Notas = reader.GetString(7),
+                                Estado = reader.GetString(8),
+                                Categoria = reader.GetString(9)
                             };
                             citas.Add(cita);
                         }
@@ -1044,7 +1100,7 @@ namespace AdministradorLaboral.Controllers
 
             return Json(citas, JsonRequestBehavior.AllowGet);
         }
-
+        
         // Método para obtener los detalles de una cita por ID
         [HttpGet]
         public JsonResult ObtenerCitaPorId(int id)
@@ -1060,7 +1116,7 @@ namespace AdministradorLaboral.Controllers
 
                 // Consulta para obtener los detalles de la cita
                 string queryCita = @"
-            SELECT Id, Cliente, Trabajador, Servicio, FechaHoraInicio, FechaHoraFin, Duracion, Notas, Categoria
+            SELECT Id, Cliente, Trabajador, Servicio, FechaHoraInicio, FechaHoraFin, Duracion, Notas, Estado, Categoria
             FROM Citas
             WHERE Id = @Id";
 
@@ -1082,10 +1138,11 @@ namespace AdministradorLaboral.Controllers
                                 FechaHoraFin = reader.GetDateTime(5),
                                 Duracion = reader.GetTimeSpan(6),
                                 Notas = reader.GetString(7),
-                                Categoria = reader.GetString(8)
+                                Estado = reader.GetString(8),
+                                Categoria = reader.GetString(9)
                             };
-        
-                    reader.Close(); // Cierra el DataReader antes de ejecutar otra consulta
+
+                            reader.Close(); // Cierra el DataReader antes de ejecutar otra consulta
 
                             // Obtener el nombre del trabajador
                             int trabajadorId = cita.Trabajador;
@@ -1167,11 +1224,14 @@ namespace AdministradorLaboral.Controllers
             return Json(new { success = true });
         }
 
+
+
+
         public JsonResult ObtenerCategorias()
         {
             List<string> categorias = new List<string>();
 
-            
+
             string query = "SELECT DISTINCT Categoria FROM Servicios";
 
             using (SqlConnection connection = new SqlConnection(conexionDB))
@@ -1315,7 +1375,7 @@ namespace AdministradorLaboral.Controllers
                     }
                 }
             }
-
+            estaDisponible = true;
             return Json(estaDisponible, JsonRequestBehavior.AllowGet);
         }
 
@@ -1425,6 +1485,53 @@ namespace AdministradorLaboral.Controllers
             return false; // La cita no está dentro del rango de horas
         }
 
+
+        //AQUI VIENE LA PARTE DE CITAS HISTORIAL
+        public ActionResult CitasHistorial(int userId, string userName, string userRole, int userCenter)
+        {
+
+            ViewBag.UserId = userId;
+            ViewBag.UserName = userName;
+            ViewBag.UserRole = userRole;
+            ViewBag.UserCenter = userCenter;
+            List<Citas> citas = new List<Citas>();
+            using (SqlConnection con = new SqlConnection(conexionDB))
+            {
+                con.Open();
+                string query = "SELECT C.Id, C.Cliente, C.Trabajador, C.Categoria, C.Servicio, C.FechaHoraInicio, C.FechaHoraFin, C.Duracion, C.Notas, C.Estado, CL.Nombre AS NombreCliente, CL.Apellido AS ApellidoCliente, P.Nombre AS NombreTrabajador " +
+                               "FROM Citas C " +
+                               "INNER JOIN Clientes CL ON C.Cliente = CL.Id " +
+                               "INNER JOIN Personal P ON C.Trabajador = P.Id";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Citas cita = new Citas
+                            {
+                                Id = reader.GetInt32(0),
+                                Cliente = reader.GetInt32(1),
+                                Trabajador = reader.GetInt32(2),
+                                Categoria = reader.GetString(3),
+                                Servicio = reader.GetString(4),
+                                FechaHoraInicio = reader.GetDateTime(5),
+                                FechaHoraFin = reader.GetDateTime(6),
+                                Duracion = reader.GetTimeSpan(7),
+                                Notas = reader.GetString(8),
+                                Estado = reader.GetString(9),
+                                NombreCliente = reader.GetString(10) + " " + reader.GetString(11), // Nombre y Apellido del Cliente
+                                NombreTrabajador = reader.GetString(12) // Nombre del Trabajador
+                            };
+                            citas.Add(cita);
+                        }
+                    }
+                }
+            }
+            return View(citas);
+        }
+
+
         //-------------//-----------------//---------------//---------------//------------------//-----------------//-----------//
 
         //Servicios
@@ -1455,7 +1562,7 @@ namespace AdministradorLaboral.Controllers
                             DuracionNumero = duracionMinutos,
                             Precio = reader.GetInt32(4),
                             Categoria = reader.GetString(5),
-                            TrabajadorEspecialidad = reader.GetString(6),                           
+                            TrabajadorEspecialidad = reader.GetString(6),
                         };
                         servicios.Add(servicio);
                     }
@@ -1483,7 +1590,7 @@ namespace AdministradorLaboral.Controllers
                 return View(servicio);
             }
 
-           
+
 
             // Insertar datos en la base de datos
             using (SqlConnection connection = new SqlConnection(conexionDB))
@@ -1492,7 +1599,7 @@ namespace AdministradorLaboral.Controllers
                                 VALUES (@Nombre, @Descripcion, @Duracion, @Precio, @Categoria, @TrabajadorEspecialidad)"
                 ;
 
-                
+
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -1502,7 +1609,7 @@ namespace AdministradorLaboral.Controllers
                     command.Parameters.AddWithValue("@Precio", servicio.Precio);
                     command.Parameters.AddWithValue("@Categoria", servicio.Categoria);
                     command.Parameters.AddWithValue("@TrabajadorEspecialidad", servicio.TrabajadorEspecialidad);
-                   
+
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -1541,7 +1648,7 @@ namespace AdministradorLaboral.Controllers
                                 DuracionNumero = duracionMinutos,
                                 Precio = reader.GetInt32(4),
                                 Categoria = reader.GetString(5),
-                                TrabajadorEspecialidad = reader.GetString(6),                               
+                                TrabajadorEspecialidad = reader.GetString(6),
                             };
                         }
                     }
